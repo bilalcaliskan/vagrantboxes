@@ -1,0 +1,14 @@
+---
+
+version: 3.5.5
+download_url: http://kozyatagi.mirror.guzel.net.tr/apache/zookeeper/zookeeper-{{ version }}/apache-zookeeper-{{ version }}-bin.tar.gz
+file_name: apache-zookeeper-{{ version }}-bin.tar.gz
+folder_name: apache-zookeeper-{{ version }}-bin
+data_directory: /var/lib/zookeeper
+init_limit: 5
+sync_limit: 2
+tick_time: 2000
+required_ports:
+  client_port: 2181
+  communication_port: 2888
+  leader_election_port: 3888

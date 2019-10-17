@@ -1,0 +1,88 @@
+---
+
+- name: Ensure zookeeper group exists
+  group:
+    name: zookeeper
+    state: present
+
+- name: Ensure zookeeper user exists
+  user:
+    name: zookeeper
+    shell: /sbin/nologin
+    group: zookeeper
+
+- name: Check if ZooKeeper has already been downloaded and unpacked
+  stat:
+    path: "/opt/{{ folder_name }}"
+  register: is_downloaded
+
+- name: Download tar.gz file
+  get_url:
+    url: "{{ download_url }}"
+    dest: /opt/
+    owner: zookeeper
+    group: zookeeper
+    mode: 0644
+  when: not is_downloaded.stat.exists
+
+- name: Extract tar.gz file
+  unarchive:
+    src: "/opt/{{ file_name }}"
+    dest: /opt/
+    owner: zookeeper
+    group: zookeeper
+    remote_src: yes
+  when: not is_downloaded.stat.exists
+
+- name: Recursively change ownership of a zookeeper directory
+  file:
+    path: "/opt/{{ folder_name }}"
+    state: directory
+    recurse: yes
+    owner: zookeeper
+    group: zookeeper
+
+- name: Create a symlink of zookeeper directory
+  file:
+    src: "/opt/{{ folder_name }}"
+    dest: /opt/zookeeper
+    owner: zookeeper
+    group: zookeeper
+    state: link
+
+- name: Create zookeeper data directory
+  file:
+    path: "{{ data_directory }}"
+    state: directory
+    owner: zookeeper
+    group: zookeeper
+    mode: 0770
+
+- name: Transfer template files to the remote location
+  template:
+    src: "{{ item.src_path }}"
+    dest: "{{ item.dest_path }}"
+    owner: "{{ item.user }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  loop:
+    - { src_path: zoo.cfg.j2, dest_path: /opt/zookeeper/conf/zoo.cfg, user: zookeeper, group: zookeeper, mode: 0644  }
+    - { src_path: myid.j2, dest_path: "{{ data_directory }}/myid", user: zookeeper, group: zookeeper, mode: 0644  }
+    - { src_path: zookeeper.service.j2, dest_path: /etc/systemd/system/zookeeper.service, user: root, group: root, mode: 0644  }
+    - { src_path: zookeeper.xml.j2, dest_path: /etc/firewalld/services/zookeeper.xml, user: root, group: root, mode: 0644  }
+
+- name: Reload firewalld
+  command: firewall-cmd --reload
+
+- name: Allow zookeeper service
+  firewalld:
+    service: zookeeper
+    permanent: yes
+    state: enabled
+  notify:
+    - Reload firewalld
+    - Start and enable zookeeper service
+
+- name: Set fact zookeeper_installed
+  set_fact:
+    zookeeper_installed: true

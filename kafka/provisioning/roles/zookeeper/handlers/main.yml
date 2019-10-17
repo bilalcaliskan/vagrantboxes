@@ -1,0 +1,11 @@
+---
+
+- name: Reload firewalld
+  command: firewall-cmd --reload
+
+- name: Start and enable zookeeper service
+  systemd:
+    state: started
+    enabled: yes
+    daemon_reload: yes
+    name: zookeeper

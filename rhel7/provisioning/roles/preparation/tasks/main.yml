@@ -1,0 +1,22 @@
+---
+
+- name: add IP address of all hosts to "{{ hosts_file_path }}" file
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ hostvars[item]['ansible_eth1']['ipv4']['address'] }} {{ item }}"
+    state: present
+  loop: "{{ groups['all'] }}"
+
+- name: Transfer template file to the remote location
+  template:
+    src: centos.repo.j2
+    dest: /etc/yum.repos.d/centos.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update all packages
+  yum:
+    name: "*"
+    state: latest
+    update_cache: yes

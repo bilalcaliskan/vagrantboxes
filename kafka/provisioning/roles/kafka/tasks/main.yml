@@ -1,0 +1,67 @@
+---
+
+- name: Ensure {{ group }} group exists
+  group:
+    name: "{{ group }}"
+    state: present
+
+- name: Ensure {{ group }} user exists
+  user:
+    name: "{{ user }}"
+    shell: /sbin/nologin
+    group: "{{ group }}"
+
+- name: Check if Kafka has already been downloaded and unpacked
+  stat:
+    path: "{{ folder_path }}"
+  register: is_downloaded
+
+- name: Download tar.gz file
+  get_url:
+    url: "{{ download_url }}"
+    dest: "{{ file_path }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0644
+  when: not is_downloaded.stat.exists
+
+- name: Extract tar.gz file
+  unarchive:
+    src: "{{ file_path }}"
+    dest: "{{ base_dir }}/"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    remote_src: yes
+  when: not is_downloaded.stat.exists
+
+- name: Recursively change ownership of unarchived directory
+  file:
+    path: "{{ folder_path }}"
+    state: directory
+    recurse: yes
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Create a symlink of unarchived directory
+  file:
+    src: "{{ folder_path }}"
+    dest: "{{ link_path }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: link
+
+- name: Create data directory
+  file:
+    path: "{{ data_dir_path }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0770
+
+- name: Transfer template files to the remote location
+  template:
+    src: server.properties.j2
+    dest: "{{ config_dir_path }}/server.properties"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0644

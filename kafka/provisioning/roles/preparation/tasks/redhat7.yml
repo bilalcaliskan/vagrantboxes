@@ -1,0 +1,11 @@
+---
+
+- name: Autoremove unneeded packages installed as dependencies
+  yum:
+    autoremove: yes
+
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ required_packages }}"

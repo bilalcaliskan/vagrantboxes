@@ -1,0 +1,11 @@
+---
+
+- name: Autoremove unneeded packages installed as dependencies
+  dnf:
+    autoremove: yes
+
+- name: Install required packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ required_packages }}"

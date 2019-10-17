@@ -1,0 +1,9 @@
+---
+
+timezone: Europe/Istanbul
+required_packages:
+  - java-1.8.0-openjdk
+required_ports:
+  client_port: 2181
+  communication_port: 2888
+  leader_election_port: 3888

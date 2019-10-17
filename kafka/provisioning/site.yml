@@ -1,0 +1,42 @@
+---
+
+- name: Pre tasks playbook execution
+  hosts: all
+  serial: "100%"
+  become: true
+  gather_facts: false
+  pre_tasks:
+    - name: Create the CentOS BaseOS repo
+      raw: >
+        echo -e '[BaseOS]\nname=CentOS-8 - Base\nmirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=BaseOS&infra=$infra\nenabled=1\ngpgcheck=0' > /etc/yum.repos.d/centos_baseos.repo
+    - name: Create the CentOS AppStream repo
+      raw: >
+        echo -e '\n[AppStream]\nname=CentOS-8 - AppStream\nmirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=AppStream&infra=$infra\nenabled=1\ngpgcheck=0' > /etc/yum.repos.d/centos_appstream.repo
+    - name: Clean yum cache
+      raw: dnf clean all && rm -rf /var/cache/yum
+    - name: Ensure Python2 is installed on managed hosts
+      raw: test -e /usr/bin/python2 || (dnf install -y python2)
+    - name: Ensure Python3 is installed on managed hosts
+      raw: test -e /usr/bin/python3 || (dnf install -y python3)
+    - name: Set python3 is default python
+      raw: echo 3 | alternatives --config python
+  tasks:
+    - name: Gather facts
+      setup:
+
+    #- name: Import preparation role
+    #  import_role:
+    #    name: preparation
+    #  tags: preparation
+
+    #- name: Import zookeeper role
+    #  import_role:
+    #    name: zookeeper
+    #  tags:
+    #    - zookeeper
+    #    - configuration
+
+    - name: Import kafka role
+      import_role:
+        name: kafka
+      tags: kafka
