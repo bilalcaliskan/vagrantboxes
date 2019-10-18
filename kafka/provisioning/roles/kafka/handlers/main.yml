@@ -8,10 +8,11 @@
   command: firewall-cmd --reload
 
 - name: Start and enable kafka service
-  service:
+  systemd:
     name: kafka
-    enabled: yes
     state: started
+    enabled: yes
+    daemon_reload: yes
 
 - name: Create a symlink of kafka log directory
   file:

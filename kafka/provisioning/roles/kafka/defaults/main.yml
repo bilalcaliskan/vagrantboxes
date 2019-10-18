@@ -4,6 +4,9 @@ scala_version: 2.12
 kafka_version: 2.2.0
 user: kafka
 group: kafka
+# Consider changing below variable if you only want to use zookeeper with kafka
+# and you want your zookeeper nodes and kafka brokers to be seperately. If you want that,
+# your Kafka brokers and Zookeeper nodes must be in different groups in inventory file.
 # Change the below with the group name of zookeeper servers if you do not want to
 # setup zookeepers with the same servers with your kafka servers
 zookeeper_host_group_name: all

@@ -1,1 +1,1 @@
-{{ groups['all'].index(inventory_hostname) }}
+{{ groups[zookeeper_host_group_name].index(inventory_hostname) }}

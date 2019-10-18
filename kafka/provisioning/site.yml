@@ -24,10 +24,10 @@
     - name: Gather facts
       setup:
 
-    #- name: Import preparation role
-    #  import_role:
-    #    name: preparation
-    #  tags: preparation
+    - name: Import preparation role
+      import_role:
+        name: preparation
+      tags: preparation
 
     - name: Import motd role
       import_role:

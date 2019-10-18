@@ -10,62 +10,55 @@
 
 - name: Install and configure Zookeeper
   block:
-    - name: Ensure zookeeper group exists
+    - name: Ensure {{ group }} group exists
       group:
-        name: zookeeper
+        name: "{{ group }}"
         state: present
 
-    - name: Ensure zookeeper user exists
+    - name: Ensure {{ user }} user exists
       user:
-        name: zookeeper
+        name: "{{ user }}"
         shell: /sbin/nologin
-        group: zookeeper
-
-    - name: Check if ZooKeeper has already been downloaded and unpacked
-      stat:
-        path: "/opt/{{ folder_name }}"
-      register: is_downloaded
+        group: "{{ group }}"
 
     - name: Download tar.gz file
       get_url:
         url: "{{ download_url }}"
-        dest: /opt/
-        owner: zookeeper
-        group: zookeeper
+        dest: "{{ base_dir_path }}/"
+        owner: "{{ user }}"
+        group: "{{ group }}"
         mode: 0644
-      when: not is_downloaded.stat.exists
 
     - name: Extract tar.gz file
       unarchive:
-        src: "/opt/{{ file_name }}"
-        dest: /opt/
-        owner: zookeeper
-        group: zookeeper
+        src: "{{ file_path }}"
+        dest: "{{ base_dir_path }}/"
+        owner: "{{ user }}"
+        group: "{{ group }}"
         remote_src: yes
-      when: not is_downloaded.stat.exists
 
-    - name: Recursively change ownership of a zookeeper directory
+    - name: Recursively change ownership of unarchived directory
       file:
-        path: "/opt/{{ folder_name }}"
+        path: "{{ folder_path }}"
         state: directory
         recurse: yes
-        owner: zookeeper
-        group: zookeeper
+        owner: "{{ user }}"
+        group: "{{ group }}"
 
-    - name: Create a symlink of zookeeper directory
+    - name: Create a symlink of unarchived directory
       file:
-        src: "/opt/{{ folder_name }}"
-        dest: /opt/zookeeper
-        owner: zookeeper
-        group: zookeeper
+        src: "{{ folder_path }}"
+        dest: "{{ link_path }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
         state: link
 
-    - name: Create zookeeper data directory
+    - name: Create data directory
       file:
-        path: "{{ data_directory }}"
+        path: "{{ data_dir_path }}"
         state: directory
-        owner: zookeeper
-        group: zookeeper
+        owner: "{{ user }}"
+        group: "{{ group }}"
         mode: 0770
 
     - name: Transfer template files to the remote location
@@ -76,9 +69,9 @@
         group: "{{ item.group }}"
         mode: "{{ item.mode }}"
       loop:
-        - { src_path: zoo.cfg.j2, dest_path: /opt/zookeeper/conf/zoo.cfg, user: zookeeper, group: zookeeper, mode: 0644  }
-        - { src_path: myid.j2, dest_path: "{{ data_directory }}/myid", user: zookeeper, group: zookeeper, mode: 0644  }
-        - { src_path: zookeeper.service.j2, dest_path: /etc/systemd/system/zookeeper.service, user: root, group: root, mode: 0644  }
+        - { src_path: zoo.cfg.j2, dest_path: "{{ link_path }}/conf/zoo.cfg", user: "{{ user }}", group: "{{ group }}", mode: 0644  }
+        - { src_path: myid.j2, dest_path: "{{ data_dir_path }}/myid", user: "{{ user }}", group: "{{ group }}", mode: 0644  }
+        - { src_path: zookeeper.service.j2, dest_path: /usr/lib/systemd/system/zookeeper.service, user: root, group: root, mode: 0644  }
         - { src_path: zookeeper.xml.j2, dest_path: /etc/firewalld/services/zookeeper.xml, user: root, group: root, mode: 0644  }
 
     - name: Reload firewalld

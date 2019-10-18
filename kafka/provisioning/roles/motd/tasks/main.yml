@@ -1,11 +1,14 @@
 ---
 
-  - name: motd file update
-    template:
-      src: motd.j2
-      dest: /etc/motd
-      backup: no
-      owner: 0
-      group: 0
-      mode: 0644
-    tags: [configuration,motd]
+- name: Gather facts
+  setup:
+
+- name: motd file update
+  template:
+    src: motd.j2
+    dest: /etc/motd
+    backup: no
+    owner: 0
+    group: 0
+    mode: 0644
+  tags: [configuration,motd]

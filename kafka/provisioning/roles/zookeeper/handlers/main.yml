@@ -8,10 +8,11 @@
   command: firewall-cmd --reload
 
 - name: Start and enable zookeeper service
-  service:
+  systemd:
     name: zookeeper
-    enabled: yes
     state: started
+    enabled: yes
+    daemon_reload: yes
 
 - name: Create a symlink of zookeeper log directory
   file:
