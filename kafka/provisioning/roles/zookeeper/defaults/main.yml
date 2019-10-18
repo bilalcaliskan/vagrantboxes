@@ -2,8 +2,10 @@
 
 version: 3.5.5
 download_url: http://kozyatagi.mirror.guzel.net.tr/apache/zookeeper/zookeeper-{{ version }}/apache-zookeeper-{{ version }}-bin.tar.gz
-file_name: apache-zookeeper-{{ version }}-bin.tar.gz
+file_path: apache-zookeeper-{{ version }}-bin.tar.gz
 folder_name: apache-zookeeper-{{ version }}-bin
+link_path: /opt/zookeeper
+log_path: /var/log/zookeeper
 data_directory: /var/lib/zookeeper
 init_limit: 5
 sync_limit: 2

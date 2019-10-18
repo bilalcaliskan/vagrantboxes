@@ -12,16 +12,22 @@ base_dir: /opt
 folder_path: "{{ base_dir }}/kafka_{{ scala_version }}-{{ kafka_version }}"
 file_path: "{{ folder_path }}.tgz"
 link_path: "{{ base_dir }}/kafka"
+log_path: /var/log/kafka
 data_dir_path: "{{ link_path }}/kafka-logs"
 config_dir_path: "{{ link_path }}/config"
 java_opts: -Xmx1G -Xms1G
 required_limits:
-  - name: nofile
+  - user: kafka
+    type: soft
+    key: nofile
+    value: 32768
+  - user: kafka
+    type: hard
+    key: nofile
     value: 32768
 required_kernel_parameters:
-  - name: fs.file-max
+  - key: fs.file-max
     value: 32768
-
 num_partitions: 1
 num_recovery_threads_per_data_dir: 1
 offsets_topic_replication_factor: 3

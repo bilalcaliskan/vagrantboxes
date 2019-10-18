@@ -22,6 +22,15 @@ If you have installed your Zookeeper servers seperately with Kafka brokers, then
 
       zookeeper_host_group_name: $ZOOKEEPER_GROUP_NAME
 
+*Setting variables in the playbook:
+
+    - hosts: all
+      roles:
+        - role: bilalcaliskan.kafka
+          become: yes
+      vars:
+        message: Your custom message here
+
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):

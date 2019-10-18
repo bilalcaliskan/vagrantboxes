@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache Kafka
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+SuccessExitStatus=143
+ExecStart={{ link_path }}/bin/kafka-server-start.sh {{ config_dir_path }}/server.properties
+ExecStop={{ link_path }}/bin/kafka-server-stop.sh
+User={{ user }}
+Group={{ group }}
+
+[Install]
+WantedBy=multi-user.target
+Alias=kafka.service

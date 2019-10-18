@@ -1,0 +1,16 @@
+galaxy_info:
+  author: bilalcaliskan
+  role_name: motd
+  description: Configuration role for MOTD(message of the day)
+  min_ansible_version: 2.6
+  galaxy_tags:
+    - configuration
+    - motd
+  license: "license (BSD, MIT)"
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+
+dependencies: []

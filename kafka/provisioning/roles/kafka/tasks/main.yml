@@ -1,67 +1,113 @@
 ---
 
-- name: Ensure {{ group }} group exists
-  group:
-    name: "{{ group }}"
-    state: present
+- name: Get service facts
+  service_facts:
 
-- name: Ensure {{ group }} user exists
-  user:
-    name: "{{ user }}"
-    shell: /sbin/nologin
-    group: "{{ group }}"
+- name: check if Kafka is installed
+  set_fact:
+    kafka_installed: false
+  when: ansible_facts.services["kafka.service"] is not defined
 
-- name: Check if Kafka has already been downloaded and unpacked
-  stat:
-    path: "{{ folder_path }}"
-  register: is_downloaded
+- name: Install and configure Kafka
+  block:
+    - name: Ensure {{ group }} group exists
+      group:
+        name: "{{ group }}"
+        state: present
 
-- name: Download tar.gz file
-  get_url:
-    url: "{{ download_url }}"
-    dest: "{{ file_path }}"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    mode: 0644
-  when: not is_downloaded.stat.exists
+    - name: Ensure {{ group }} user exists
+      user:
+        name: "{{ user }}"
+        shell: /sbin/nologin
+        group: "{{ group }}"
 
-- name: Extract tar.gz file
-  unarchive:
-    src: "{{ file_path }}"
-    dest: "{{ base_dir }}/"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    remote_src: yes
-  when: not is_downloaded.stat.exists
+    - name: Download tar.gz file
+      get_url:
+        url: "{{ download_url }}"
+        dest: "{{ file_path }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        mode: 0644
 
-- name: Recursively change ownership of unarchived directory
-  file:
-    path: "{{ folder_path }}"
-    state: directory
-    recurse: yes
-    owner: "{{ user }}"
-    group: "{{ group }}"
+    - name: Extract tar.gz file
+      unarchive:
+        src: "{{ file_path }}"
+        dest: "{{ base_dir }}/"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        remote_src: yes
 
-- name: Create a symlink of unarchived directory
-  file:
-    src: "{{ folder_path }}"
-    dest: "{{ link_path }}"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    state: link
+    - name: Recursively change ownership of unarchived directory
+      file:
+        path: "{{ folder_path }}"
+        state: directory
+        recurse: yes
+        owner: "{{ user }}"
+        group: "{{ group }}"
 
-- name: Create data directory
-  file:
-    path: "{{ data_dir_path }}"
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    mode: 0770
+    - name: Create a symlink of unarchived directory
+      file:
+        src: "{{ folder_path }}"
+        dest: "{{ link_path }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        state: link
 
-- name: Transfer template files to the remote location
-  template:
-    src: server.properties.j2
-    dest: "{{ config_dir_path }}/server.properties"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    mode: 0644
+    - name: Create data directory
+      file:
+        path: "{{ data_dir_path }}"
+        state: directory
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        mode: 0770
+
+    - name: Transfer template files to the remote location
+      template:
+        src: "{{ item.src_path }}"
+        dest: "{{ item.dest_path }}"
+        owner: "{{ item.user }}"
+        group: "{{ item.group }}"
+        mode: "{{ item.mode }}"
+      loop:
+        - { src_path: server.properties.j2, dest_path: "{{ config_dir_path }}/server.properties", user: "{{ user }}", group: "{{ group }}", mode: 0644  }
+        - { src_path: kafka.service.j2, dest_path: /etc/systemd/system/kafka.service, user: root, group: root, mode: 0644  }
+        - { src_path: kafka.xml.j2, dest_path: /etc/firewalld/services/kafka.xml, user: root, group: root, mode: 0644  }
+
+    - name: Reload firewalld
+      command: firewall-cmd --reload
+
+    - name: Set kernel parameters for Kafka
+      sysctl:
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+        reload: yes
+      loop: "{{ required_kernel_parameters }}"
+
+    - name: Set limits for Kafka
+      pam_limits:
+        domain: "{{ item.user }}"
+        limit_type: "{{ item.type }}"
+        limit_item: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop: "{{ required_limits }}"
+
+    - name: Allow kafka service
+      firewalld:
+        service: kafka
+        permanent: yes
+        state: enabled
+      changed_when: true
+      notify:
+        - Pause 5 seconds before running rest of kafka handlers
+        - Reload firewalld for kafka service
+        - Start and enable kafka service
+        - Create a symlink of kafka log directory
+
+    - name: Set fact kafka_installed
+      set_fact:
+        kafka_installed: true
+  rescue:
+    - debug:
+        msg: "Got an error inside block, try to rerun tasks with -v option"
+  when: ansible_facts.services["kafka.service"] is not defined

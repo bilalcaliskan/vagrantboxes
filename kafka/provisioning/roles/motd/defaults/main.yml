@@ -1,0 +1,8 @@
+---
+
+message: |
++++++++++++++++++ System Data +++++++++++++++++++
+
+The operating system is {% if ansible_distribution is defined %}{{ ansible_distribution }}{% endif %}
+
+The domain is {{ ansible_domain }}
