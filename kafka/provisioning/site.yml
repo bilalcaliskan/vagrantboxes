@@ -24,17 +24,17 @@
     - name: Gather facts
       setup:
 
-    #- name: Import preparation role
-    #  import_role:
-    #    name: preparation
-    #  tags: preparation
+    - name: Import preparation role
+      import_role:
+        name: preparation
+      tags: preparation
 
-    #- name: Import zookeeper role
-    #  import_role:
-    #    name: zookeeper
-    #  tags:
-    #    - zookeeper
-    #    - configuration
+    - name: Import zookeeper role
+      import_role:
+        name: zookeeper
+      tags:
+        - zookeeper
+        - configuration
 
     - name: Import kafka role
       import_role:
