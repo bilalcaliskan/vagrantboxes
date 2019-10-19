@@ -12,8 +12,8 @@ Group={{ group }}
 ExecStart={{ link_path }}/bin/zkServer.sh start {{ link_path }}/conf/zoo.cfg
 ExecStop={{ link_path }}/bin/zkServer.sh stop {{ link_path }}/conf/zoo.cfg
 ExecReload={{ link_path }}/bin/zkServer.sh restart {{ link_path }}/conf/zoo.cfg
-TimeoutSec=30
 Restart=on-failure
+RestartSec=30s
 
 [Install]
 WantedBy=default.target

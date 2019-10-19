@@ -15,7 +15,6 @@ User={{ user }}
 Group={{ group }}
 Restart=on-failure
 RestartSec=30s
-LimitNOFILE={{ systemd_nofile_limit }}
 
 [Install]
 WantedBy=multi-user.target
