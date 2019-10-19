@@ -31,6 +31,8 @@ required_limits:
 required_kernel_parameters:
   - key: fs.file-max
     value: 32768
+required_packages:
+  - java-1.8.0-openjdk
 num_partitions: 1
 num_recovery_threads_per_data_dir: 1
 offsets_topic_replication_factor: 3

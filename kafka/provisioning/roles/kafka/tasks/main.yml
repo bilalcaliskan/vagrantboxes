@@ -10,6 +10,24 @@
 
 - name: Install and configure Kafka
   block:
+    - name: Install required packages for rhel8
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ required_packages }}"
+      when:
+        - ansible_facts['os_family'] == "RedHat"
+        - ansible_facts['distribution_major_version'] == "8"
+
+    - name: Install required packages for rhel7
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ required_packages }}"
+      when:
+        - ansible_facts['os_family'] == "RedHat"
+        - ansible_facts['distribution_major_version'] == "7"
+
     - name: Ensure {{ group }} group exists
       group:
         name: "{{ group }}"
