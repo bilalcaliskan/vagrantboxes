@@ -19,6 +19,7 @@ log_path: /var/log/kafka
 data_dir_path: "{{ link_path }}/kafka-logs"
 config_dir_path: "{{ link_path }}/config"
 java_opts: -Xmx1G -Xms1G
+systemd_nofile_limit: 32768
 required_limits:
   - user: kafka
     type: soft
