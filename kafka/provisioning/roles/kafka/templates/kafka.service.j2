@@ -13,8 +13,10 @@ ExecStart={{ link_path }}/bin/kafka-server-start.sh {{ config_dir_path }}/server
 ExecStop={{ link_path }}/bin/kafka-server-stop.sh
 User={{ user }}
 Group={{ group }}
+RemainAfterExit=no
 Restart=on-failure
-RestartSec=30s
+RestartSec=10s
+LimitNOFILE={{ systemd_nofile_limit }}
 
 [Install]
 WantedBy=multi-user.target

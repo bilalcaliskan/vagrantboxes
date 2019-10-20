@@ -19,6 +19,7 @@ data_dir_path: /var/lib/zookeeper
 init_limit: 5
 sync_limit: 2
 tick_time: 2000
+systemd_nofile_limit: 32768
 required_ports:
   client_port: 2181
   communication_port: 2888
