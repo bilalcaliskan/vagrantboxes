@@ -4,12 +4,13 @@ scala_version: 2.12
 kafka_version: 2.2.0
 user: kafka
 group: kafka
-# Consider changing below variable if you only want to use zookeeper with kafka
+# Consider changing below variables if you only want to use zookeeper with kafka
 # and you want your zookeeper nodes and kafka brokers to be seperately. If you want that,
 # your Kafka brokers and Zookeeper nodes must be in different groups in inventory file.
-# Change the below with the group name of zookeeper servers if you do not want to
+# Change the belows with the group name of zookeeper servers and kafka brokers if you do not want to
 # setup zookeepers with the same servers with your kafka servers
 zookeeper_host_group_name: all
+kafka_host_group_name: all
 download_url: http://kozyatagi.mirror.guzel.net.tr/apache/kafka/{{ kafka_version }}/kafka_{{ scala_version }}-{{ kafka_version }}.tgz
 base_dir: /opt
 folder_path: "{{ base_dir }}/kafka_{{ scala_version }}-{{ kafka_version }}"

@@ -1,4 +1,4 @@
-{% set hosts = groups['all'] -%}
+{% set hosts = groups[kafka_host_group_name] -%}
 {% set current_host_index = hosts.index(inventory_hostname) -%}
 broker.id={{ current_host_index }}
 listeners=PLAINTEXT://0.0.0.0:9092
