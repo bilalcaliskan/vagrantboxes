@@ -1,0 +1,29 @@
+Vagrant.require_version ">= 1.6.0"
+
+# number of worker nodes to loop
+N = 3
+
+Vagrant.configure("2") do |config|
+  (1..N).each do |machine_id|
+    config.vm.define "node0#{machine_id}" do |machine|
+      machine.vm.box = "generic/rhel8"
+      machine.ssh.insert_key = false
+      machine.vm.hostname = "node0#{machine_id}"
+      machine.vm.network "private_network", ip: "10.0.15.#{20+machine_id}"
+      machine.vm.network "forwarded_port", guest: 22, host: "220#{machine_id}", id: "ssh"
+      machine.ssh.forward_agent = true
+      machine.vm.provider "virtualbox" do |v|
+        v.customize ["modifyvm", :id, "--memory", "1024"]
+        v.customize ["modifyvm", :id, "--cpus", "1"]
+      end
+      if machine_id == N
+        machine.vm.provision :ansible do |ansible|
+          ansible.limit = "all"
+          ansible.config_file = "provisioning/ansible.cfg"
+          ansible.inventory_path = "inventory/hosts.ini"
+          ansible.playbook = "provisioning/site.yml"
+        end
+      end
+    end
+  end
+end
