@@ -1,4 +1,0 @@
-[all]
-  node01 ansible_host=127.0.0.1 ansible_port=2201
-  node02 ansible_host=127.0.0.1 ansible_port=2202
-  node03 ansible_host=127.0.0.1 ansible_port=2203

@@ -2,7 +2,7 @@
 
 - name: Main playbook execution
   hosts: all
-  serial: 3
+  serial: "100%"
   gather_facts: false
   pre_tasks:
     - name: Create the CentOS BaseOS repo block
@@ -19,5 +19,5 @@
       raw: test -e /usr/bin/python3 || (dnf install -y python3)
     - name: Set python3 is default python
       raw: echo 3 | alternatives --config python
-  roles:
-    - preparation
+  #roles:
+  #  - preparation
