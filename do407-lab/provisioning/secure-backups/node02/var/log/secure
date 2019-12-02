@@ -1,0 +1,153 @@
+Dec  1 14:13:22 node02 sshd[5048]: Accepted publickey for vagrant from 10.0.2.2 port 60762 ssh2: RSA SHA256:1M4RzhMyWuFS/86uPY/ce2prh/dVTHW7iD2RhpquOZA
+Dec  1 14:13:22 node02 systemd[5052]: pam_unix(systemd-user:session): session opened for user vagrant by (uid=0)
+Dec  1 14:13:22 node02 sshd[5048]: pam_unix(sshd:session): session opened for user vagrant by (uid=0)
+Dec  1 14:13:22 node02 sudo[5140]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-ccgzhypmxeaaeffieltlelkpdbfzcpki; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209618.77-126319095909666/AnsiballZ_setup.py
+Dec  1 14:13:22 node02 sudo[5140]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:13:22 node02 sudo[5140]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:13:23 node02 sudo[5140]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:13:23 node02 sudo[5262]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-xverjtzkjaeyheohkjfglbroltxnuhna; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209619.79-190151647162118/AnsiballZ_command.py
+Dec  1 14:13:23 node02 sudo[5262]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:13:23 node02 sudo[5262]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:13:23 node02 sudo[5262]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:13:23 node02 sudo[5357]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-uycdvimodywntvhqmmdfcexazsyevhzu; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209620.24-213846808643601/AnsiballZ_systemd.py
+Dec  1 14:13:23 node02 sudo[5357]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:13:23 node02 sudo[5357]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:13:24 node02 sudo[5357]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:13:25 node02 sudo[5452]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-knnwmromvzjzkssyzufevapisadtiyrq; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209621.79-97064450838572/AnsiballZ_systemd.py
+Dec  1 14:13:25 node02 sudo[5452]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:13:25 node02 sudo[5452]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:13:25 node02 sudo[5452]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:14:25 node02 sshd[5063]: Received disconnect from 10.0.2.2 port 60762:11: disconnected by user
+Dec  1 14:14:25 node02 sshd[5063]: Disconnected from user vagrant 10.0.2.2 port 60762
+Dec  1 14:14:25 node02 sshd[5048]: pam_unix(sshd:session): session closed for user vagrant
+Dec  1 14:14:25 node02 systemd[5057]: pam_unix(systemd-user:session): session closed for user vagrant
+Dec  1 14:14:49 node02 sshd[5479]: Accepted publickey for vagrant from 10.0.2.2 port 60766 ssh2: RSA SHA256:1M4RzhMyWuFS/86uPY/ce2prh/dVTHW7iD2RhpquOZA
+Dec  1 14:14:49 node02 systemd[5483]: pam_unix(systemd-user:session): session opened for user vagrant by (uid=0)
+Dec  1 14:14:49 node02 sshd[5479]: pam_unix(sshd:session): session opened for user vagrant by (uid=0)
+Dec  1 14:14:49 node02 sudo[5570]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-duyljpitkvjkdcybmyynnwpkqnlpctln; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209705.81-2796557160101/AnsiballZ_setup.py
+Dec  1 14:14:49 node02 sudo[5570]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:14:49 node02 sudo[5570]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:14:50 node02 sudo[5570]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:14:50 node02 sudo[5692]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-ytebhuicutlsuzydksqcasjssrziddmp; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209706.88-43460930838540/AnsiballZ_command.py
+Dec  1 14:14:50 node02 sudo[5692]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:14:50 node02 sudo[5692]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:14:50 node02 sudo[5692]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:14:50 node02 sudo[5787]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-jlzmnluqgqvmxifexuqxkxoyvyicveqc; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209707.32-136403761992302/AnsiballZ_systemd.py
+Dec  1 14:14:50 node02 sudo[5787]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:14:50 node02 sudo[5787]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:14:51 node02 sudo[5787]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:14:51 node02 sudo[5882]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-vwuqplbuhpivzimmbmycmmwrmiuitaoa; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575209707.76-51468284826640/AnsiballZ_systemd.py
+Dec  1 14:14:51 node02 sudo[5882]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:14:51 node02 sudo[5882]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:14:51 node02 sudo[5882]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:15:51 node02 sshd[5493]: Received disconnect from 10.0.2.2 port 60766:11: disconnected by user
+Dec  1 14:15:51 node02 sshd[5493]: Disconnected from user vagrant 10.0.2.2 port 60766
+Dec  1 14:15:51 node02 sshd[5479]: pam_unix(sshd:session): session closed for user vagrant
+Dec  1 14:15:51 node02 systemd[5487]: pam_unix(systemd-user:session): session closed for user vagrant
+Dec  1 14:59:37 node02 sshd[5927]: Accepted publickey for vagrant from 10.0.2.2 port 60826 ssh2: RSA SHA256:1M4RzhMyWuFS/86uPY/ce2prh/dVTHW7iD2RhpquOZA
+Dec  1 14:59:38 node02 systemd[5931]: pam_unix(systemd-user:session): session opened for user vagrant by (uid=0)
+Dec  1 14:59:38 node02 sshd[5927]: pam_unix(sshd:session): session opened for user vagrant by (uid=0)
+Dec  1 14:59:38 node02 sudo[6019]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-ldywwivagszuwnqrheomhaauwqxeqygi; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212394.5-211436800259083/AnsiballZ_setup.py
+Dec  1 14:59:38 node02 sudo[6019]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:38 node02 sudo[6019]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:38 node02 sudo[6019]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:59:39 node02 sudo[6141]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-llrbdxfaaalaeoudvybduqovlgvczpsp; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212395.59-79192053795202/AnsiballZ_file.py
+Dec  1 14:59:39 node02 sudo[6141]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:39 node02 sudo[6141]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:39 node02 sudo[6141]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:59:39 node02 sudo[6235]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-ucenrkwgipodrtpgbknardzsykwgonnh; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212396.08-183793390336329/AnsiballZ_stat.py
+Dec  1 14:59:39 node02 sudo[6235]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:39 node02 sudo[6235]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:39 node02 sudo[6235]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:59:57 node02 sudo[6331]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-xjjfnxbrumcohvwolziynzvvyibmxnjc; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212414.2-58445805934841/AnsiballZ_setup.py
+Dec  1 14:59:57 node02 sudo[6331]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:57 node02 sudo[6331]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:58 node02 sudo[6331]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:59:58 node02 sudo[6453]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-vyyeefpmhvuflixiubexzxnyhqurfyle; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212415.03-275561716023299/AnsiballZ_file.py
+Dec  1 14:59:58 node02 sudo[6453]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:58 node02 sudo[6453]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:58 node02 sudo[6453]: pam_unix(sudo:session): session closed for user root
+Dec  1 14:59:59 node02 sudo[6547]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-xgywaugrtnujuoxftanqxrtbggccljwf; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212415.52-178102881009203/AnsiballZ_stat.py
+Dec  1 14:59:59 node02 sudo[6547]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 14:59:59 node02 sudo[6547]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 14:59:59 node02 sudo[6547]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:00:59 node02 sshd[5942]: Received disconnect from 10.0.2.2 port 60826:11: disconnected by user
+Dec  1 15:00:59 node02 sshd[5942]: Disconnected from user vagrant 10.0.2.2 port 60826
+Dec  1 15:00:59 node02 sshd[5927]: pam_unix(sshd:session): session closed for user vagrant
+Dec  1 15:00:59 node02 systemd[5936]: pam_unix(systemd-user:session): session closed for user vagrant
+Dec  1 15:01:04 node02 sshd[6589]: Accepted publickey for vagrant from 10.0.2.2 port 60830 ssh2: RSA SHA256:1M4RzhMyWuFS/86uPY/ce2prh/dVTHW7iD2RhpquOZA
+Dec  1 15:01:05 node02 systemd[6593]: pam_unix(systemd-user:session): session opened for user vagrant by (uid=0)
+Dec  1 15:01:05 node02 sshd[6589]: pam_unix(sshd:session): session opened for user vagrant by (uid=0)
+Dec  1 15:01:05 node02 sudo[6680]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-vakcmkvlkkofzqesdzqsncyynqexjeac; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212481.47-17785126676531/AnsiballZ_setup.py
+Dec  1 15:01:05 node02 sudo[6680]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:05 node02 sudo[6680]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:05 node02 sudo[6680]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:06 node02 sudo[6802]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-hwyhnxibmihhblggeraizhfcpeoqnmib; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212482.58-145405016337012/AnsiballZ_file.py
+Dec  1 15:01:06 node02 sudo[6802]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:06 node02 sudo[6802]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:06 node02 sudo[6802]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:06 node02 sudo[6896]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-ltcffurirtvyocwsoyvjosivqwmdskin; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212483.05-137477345849573/AnsiballZ_stat.py
+Dec  1 15:01:06 node02 sudo[6896]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:06 node02 sudo[6896]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:06 node02 sudo[6896]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:32 node02 sudo[6992]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-awvjvxzwmpufidbjwaylapcvkecncrzg; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212508.93-276816585318413/AnsiballZ_setup.py
+Dec  1 15:01:32 node02 sudo[6992]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:32 node02 sudo[6992]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:33 node02 sudo[6992]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:33 node02 sudo[7114]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-gkwfpltoskaygnbzhycanjolgbitjtth; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212509.74-249352173994848/AnsiballZ_file.py
+Dec  1 15:01:33 node02 sudo[7114]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:33 node02 sudo[7114]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:33 node02 sudo[7114]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:33 node02 sudo[7208]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-digwxiwnmwxusxqruxjulxkwkpidhwpa; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212510.2-217141838194665/AnsiballZ_stat.py
+Dec  1 15:01:33 node02 sudo[7208]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:33 node02 sudo[7208]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:33 node02 sudo[7208]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:56 node02 sudo[7304]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-fgpomuqyanmpucunvuokrahgazilqyxp; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212532.64-267001326381124/AnsiballZ_setup.py
+Dec  1 15:01:56 node02 sudo[7304]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:56 node02 sudo[7304]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:56 node02 sudo[7304]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:57 node02 sudo[7426]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-gvidnocxengcizvfaefhqtkrixgocpyo; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212533.5-154002478240805/AnsiballZ_file.py
+Dec  1 15:01:57 node02 sudo[7426]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:57 node02 sudo[7426]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:57 node02 sudo[7426]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:01:57 node02 sudo[7520]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-jkzgkomysiucjhkpvhnlpqrstpkqijmb; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212533.94-229111768062708/AnsiballZ_stat.py
+Dec  1 15:01:57 node02 sudo[7520]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:01:57 node02 sudo[7520]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:01:57 node02 sudo[7520]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:44 node02 sudo[7616]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-kpzlrikhughplscgljbdedossjczywms; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212581.09-155649927108927/AnsiballZ_setup.py
+Dec  1 15:02:44 node02 sudo[7616]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:44 node02 sudo[7616]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:45 node02 sudo[7616]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:45 node02 sudo[7738]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-leuqxzischinaaxunnjhegcirquuamsd; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212581.9-5465208695334/AnsiballZ_file.py
+Dec  1 15:02:45 node02 sudo[7738]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:45 node02 sudo[7738]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:45 node02 sudo[7738]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:46 node02 sudo[7832]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-gsywzqzrjqradhluqqgcevdgqijvfksb; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212582.35-99459865534529/AnsiballZ_stat.py
+Dec  1 15:02:46 node02 sudo[7832]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:46 node02 sudo[7832]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:46 node02 sudo[7832]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:55 node02 sudo[7928]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-qhfmpzzpsdxqxrkduopgyhhdsplodtgp; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212591.92-124978190684094/AnsiballZ_setup.py
+Dec  1 15:02:55 node02 sudo[7928]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:55 node02 sudo[7928]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:56 node02 sudo[7928]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:56 node02 sudo[8050]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-wylaffjumppvwhyeatjbzzwkdnaaxtuu; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212592.75-278188280039401/AnsiballZ_file.py
+Dec  1 15:02:56 node02 sudo[8050]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:56 node02 sudo[8050]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:56 node02 sudo[8050]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:02:56 node02 sudo[8144]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-wvoshlvtreewhxeexfqqcsmoembnrnqx; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212593.25-212516966315156/AnsiballZ_stat.py
+Dec  1 15:02:56 node02 sudo[8144]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:02:56 node02 sudo[8144]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:02:57 node02 sudo[8144]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:03:57 node02 sshd[6603]: Received disconnect from 10.0.2.2 port 60830:11: disconnected by user
+Dec  1 15:03:57 node02 sshd[6603]: Disconnected from user vagrant 10.0.2.2 port 60830
+Dec  1 15:03:57 node02 sshd[6589]: pam_unix(sshd:session): session closed for user vagrant
+Dec  1 15:03:57 node02 systemd[6597]: pam_unix(systemd-user:session): session closed for user vagrant
+Dec  1 15:07:45 node02 sshd[8173]: Connection closed by authenticating user root 10.0.2.2 port 60842 [preauth]
+Dec  1 15:08:08 node02 sshd[8175]: Accepted publickey for vagrant from 10.0.2.2 port 60846 ssh2: RSA SHA256:1M4RzhMyWuFS/86uPY/ce2prh/dVTHW7iD2RhpquOZA
+Dec  1 15:08:08 node02 systemd[8179]: pam_unix(systemd-user:session): session opened for user vagrant by (uid=0)
+Dec  1 15:08:08 node02 sshd[8175]: pam_unix(sshd:session): session opened for user vagrant by (uid=0)
+Dec  1 15:08:08 node02 sudo[8266]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-seykvfmicrvqhazlfqndeiexmravejuv; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212904.64-162271705593204/AnsiballZ_setup.py
+Dec  1 15:08:08 node02 sudo[8266]: pam_systemd(sudo:session): Cannot create session: Already running in a session or user slice
+Dec  1 15:08:08 node02 sudo[8266]: pam_unix(sudo:session): session opened for user root by vagrant(uid=0)
+Dec  1 15:08:09 node02 sudo[8266]: pam_unix(sudo:session): session closed for user root
+Dec  1 15:08:09 node02 sudo[8388]: vagrant : TTY=pts/0 ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/sh -c echo BECOME-SUCCESS-hgovftmgdjdtjkroyjfgrghaqcjqitrx; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1575212905.72-135969324395196/AnsiballZ_slurp.py

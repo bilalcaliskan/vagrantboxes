@@ -1,0 +1,17 @@
+---
+
+- name: Manage crontab entries
+  gather_facts: yes
+  hosts: all
+  tasks:
+    - name: Create a cron file under /etc/cron.d
+      cron:
+        name: yum autoupdate
+        weekday: 2-5
+        minute: 0
+        hour: 12
+        user: root
+        job: "YUMINTERACTIVE=0 /usr/sbin/yum-autoupdate"
+        cron_file: ansible_yum-autoupdate
+    - name: Reboot the machine
+      reboot:

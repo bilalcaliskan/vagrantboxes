@@ -1,0 +1,23 @@
+---
+
+- name: Swappiness Configuration
+  hosts: all
+  gather_facts: yes
+  vars:
+    supported_distros:
+      - RedHat
+    min_ram_size_bytes: 512
+  tasks:
+    - name: Show required facts
+      debug:
+        var: "{{ item }}"
+      loop:
+        - supported_distros
+        - min_ram_size_bytes
+    - name: Set swappiness conditionally
+      sysctl:
+        name: vm.swappiness
+        value: 30
+      when:
+        - ansible_facts.distribution in supported_distros
+        - ansible_facts.memtotal_mb >= min_ram_size_bytes
