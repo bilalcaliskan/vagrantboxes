@@ -3,7 +3,7 @@ Vagrant.require_version ">= 1.6.0"
 NODE_COUNT = 1
 MEMORY = 1024
 CPU = 1
-BOX = "generic/rhel7"
+BOX = "fedora/31-cloud-base"
 
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |machine_id|
