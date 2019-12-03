@@ -1,0 +1,15 @@
+---
+
+- name: Repository Configuration
+  hosts: all
+  vars:
+    custom_pkg: example-motd
+  tasks:
+    - name: Gather Package Facts
+      package_facts:
+        manager: auto
+
+    - name: Show Package Facts for the custom package
+      debug:
+        var: ansible_facts.packages.NetworkManager-libnm
+      #when: custom_pkg not in ansible_facts.packages

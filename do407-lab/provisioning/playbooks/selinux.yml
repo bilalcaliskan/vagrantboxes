@@ -1,0 +1,39 @@
+---
+
+- name: Selinux
+  hosts: all
+  gather_facts: yes
+  #vars:
+  #  selinux_booleans:
+  #    - name: httpd_can_network_connect
+  #      state: on
+  #      persistent: yes
+  #roles:
+  #  - role: rhel-system-roles.selinux
+  tasks:
+    - name: Apply selinux role block
+      block:
+        - name: Import role
+          import_role: rhel-system-roles.selinux
+          vars:
+            selinux_booleans:
+              - name: httpd_can_network_connect
+                state: on
+                persistent: yes
+      rescue:
+        - name: Check for failure for other reasons than required reboot
+          fail:
+          when: not selinux_reboot_required
+        - name: Restart managed host
+          reboot:
+        - name: Reapply SELinux role to complete changes
+          import_role:
+            name: rhel-system-roles.selinux
+          vars:
+            selinux_booleans:
+              - name: httpd_can_network_connect
+                state: on
+                persistent: yes
+      always:
+        - name: Reboot host
+          reboot:
