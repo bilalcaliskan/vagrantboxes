@@ -7,11 +7,11 @@ BOX = "generic/rhel8"
 
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |machine_id|
-    config.vm.define "fedoranode0#{machine_id}" do |machine|
+    config.vm.define "rhelnode0#{machine_id}" do |machine|
       # TODO: upgrade base box to the latest version on your local
       machine.vm.box = "#{BOX}"
       machine.ssh.insert_key = false
-      machine.vm.hostname = "fedoranode0#{machine_id}"
+      machine.vm.hostname = "rhelnode0#{machine_id}"
       machine.vm.network "private_network", ip: "10.0.15.#{25+machine_id}"
       machine.vm.network "forwarded_port", guest: 22, host: "22#{10+machine_id}", id: "ssh"
       machine.ssh.forward_agent = true
