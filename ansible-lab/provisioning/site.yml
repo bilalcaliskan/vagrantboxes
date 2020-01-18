@@ -1,0 +1,17 @@
+---
+
+- name: Main playbook execution
+  hosts: all
+  serial: "100%"
+  gather_facts: false
+  pre_tasks:
+    - name: Clean yum cache
+      raw: yum clean all && rm -rf /var/cache/yum
+    - name: Ensure Python2 is installed on managed hosts
+      raw: test -e /usr/bin/python2 || (dnf install -y python2)
+    - name: Ensure Python3 is installed on managed hosts
+      raw: test -e /usr/bin/python3 || (dnf install -y python3)
+    - name: Set python3 is default python
+      raw: echo 3 | alternatives --config python
+  roles:
+    - preparation
