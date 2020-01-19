@@ -10,11 +10,11 @@
     state: present
   loop: "{{ groups['all'] }}"
 
-- name: Update all packages
-  dnf:
-    name: '*'
-    state: latest
-    update_cache: yes
+#- name: Update all packages
+#  dnf:
+#    name: '*'
+#    state: latest
+#    update_cache: yes
 
 - name: Autoremove unneeded packages installed as dependencies
   dnf:
