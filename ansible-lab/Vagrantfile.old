@@ -7,19 +7,6 @@ HOSTNAME_PREFIX = "centos"
 BOX = "centos/7"
 
 Vagrant.configure("2") do |config|
-  # Creation of the ansible controller
-  config.vm.define "#{HOSTNAME_PREFIX}bastion" do |bastion|
-    bastion.vm.box = "#{BOX}"
-    bastion.vm.hostname = "#{HOSTNAME_PREFIX}bastion"
-    bastion.vm.network "private_network", ip: "10.0.15.20"
-    bastion.vm.network "forwarded_port", guest: 22, host: "2210", id: "ssh"
-    bastion.ssh.forward_agent = true
-    bastion.vm.provider "virtualbox" do |v|
-      v.customize ["modifyvm", :id, "--memory", "#{MEMORY}"]
-      v.customize ["modifyvm", :id, "--cpus", "#{CPU}"]
-    end
-  end
-  # Creation of the managed hosts
   (1..NODE_COUNT).each do |machine_id|
     config.vm.define "#{HOSTNAME_PREFIX}node0#{machine_id}" do |machine|
       machine.vm.box = "#{BOX}"
