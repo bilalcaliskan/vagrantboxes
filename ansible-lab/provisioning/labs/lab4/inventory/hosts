@@ -1,0 +1,9 @@
+[nodes]
+  centosnode01 ansible_host=127.0.0.1 ansible_port=2211
+  centosnode02 ansible_host=127.0.0.1 ansible_port=2212
+
+[lamp]
+  centosnode02 ansible_host=127.0.0.1 ansible_port=2212
+
+[file]
+  centosnode01 ansible_host=127.0.0.1 ansible_port=2211
