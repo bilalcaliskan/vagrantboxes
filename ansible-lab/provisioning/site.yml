@@ -5,6 +5,12 @@
   serial: "100%"
   gather_facts: false
   pre_tasks:
+    - name: Create the CentOS BaseOS repo block
+      raw: >
+        echo -e '[BaseOS]\nname=CentOS-8 - Base\nmirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=BaseOS&infra=$infra\nenabled=1\ngpgcheck=0' > /etc/yum.repos.d/centos.repo
+    - name: Create the CentOS AppStream repo block
+      raw: > 
+        echo -e '\n[AppStream]\nname=CentOS-8 - AppStream\nmirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=AppStream&infra=$infra\nenabled=1\ngpgcheck=0' >> /etc/yum.repos.d/centos.repo
     - name: Clean yum cache
       raw: yum clean all && rm -rf /var/cache/yum
     - name: Ensure Python2 is installed on managed hosts
