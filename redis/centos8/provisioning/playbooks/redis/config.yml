@@ -1,0 +1,9 @@
+---
+
+- name: Redis role execution play
+  hosts: all
+  become: true
+  roles:
+    - role: redis
+
+...

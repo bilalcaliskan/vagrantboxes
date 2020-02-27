@@ -1,10 +1,9 @@
 ---
 
-- name: Redis role execution play
+- name: Preparation role execution play
   hosts: all
   become: true
   roles:
     - preparation
-    - redis
 
 ...
