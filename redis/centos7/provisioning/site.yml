@@ -2,7 +2,6 @@
 
 - name: Main playbook execution
   hosts: all
-  serial: "100%"
   gather_facts: false
   become: true
   pre_tasks:
@@ -12,9 +11,10 @@
       raw: test -e /usr/bin/python2 || (yum install -y python2)
     - name: Ensure Python3 is installed on managed hosts
       raw: test -e /usr/bin/python3 || (yum install -y python3)
+    - name: Gather facts
+      setup:
   roles:
-    - role: preparation
-      vars:
-        empty_var: true
+    - role: bilalcaliskan.preparation
+    - role: bilalcaliskan.redis
 
 ...

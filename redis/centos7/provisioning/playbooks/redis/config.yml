@@ -4,8 +4,8 @@
   hosts: all
   become: true
   roles:
-    - role: preparation
+    - role: bilalcaliskan.preparation
       when: install_redis | bool
-    - role: redis
+    - role: bilalcaliskan.redis
 
 ...
