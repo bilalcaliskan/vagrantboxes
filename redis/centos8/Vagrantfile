@@ -3,18 +3,18 @@ Vagrant.require_version ">= 1.6.0"
 NODE_COUNT = 3
 MEMORY = 1024
 CPU = 1
-HOSTNAME_PREFIX = "centos"
+HOSTNAME_PREFIX = "centos8"
 BOX = "centos/8"
 
 Vagrant.configure("2") do |config|
   # Creation of the managed hosts
   (1..NODE_COUNT).each do |machine_id|
-    config.vm.define "node0#{machine_id}" do |machine|
+    config.vm.define "#{HOSTNAME_PREFIX}node0#{machine_id}" do |machine|
       machine.vm.box = "#{BOX}"
       machine.ssh.insert_key = false
-      machine.vm.hostname = "node0#{machine_id}"
+      machine.vm.hostname = "#{HOSTNAME_PREFIX}node0#{machine_id}"
       machine.vm.network "private_network", ip: "10.0.15.#{25+machine_id}"
-      machine.vm.network "forwarded_port", guest: 22, host: "22#{10+machine_id}", id: "ssh"
+      machine.vm.network "forwarded_port", guest: 22, host: "22#{13+machine_id}", id: "ssh"
       machine.ssh.forward_agent = true
       machine.vm.provider "virtualbox" do |v|
         v.customize ["modifyvm", :id, "--memory", "#{MEMORY}"]
