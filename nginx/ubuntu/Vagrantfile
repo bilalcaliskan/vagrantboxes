@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   # Creation of the Nginx host
   config.vm.define "#{HOSTNAME_PREFIX}node01" do |bastion|
     bastion.vm.box = "#{BOX}"
-    bastion.vm.hostname = "bastion"
+    bastion.vm.hostname = "#{HOSTNAME_PREFIX}node01"
     bastion.vm.network "private_network", ip: "10.0.15.20"
     bastion.vm.network "forwarded_port", guest: 22, host: "2210", id: "ssh"
     bastion.ssh.forward_agent = true
