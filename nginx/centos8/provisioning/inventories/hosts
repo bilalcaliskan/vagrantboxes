@@ -1,4 +1,0 @@
-[nodes]
-  centos8node01 ansible_host=127.0.0.1 ansible_port=2214
-  centos8node02 ansible_host=127.0.0.1 ansible_port=2215
-  centos8node03 ansible_host=127.0.0.1 ansible_port=2216
