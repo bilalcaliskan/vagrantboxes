@@ -1,0 +1,11 @@
+---
+
+- name: Kafka role execution play
+  hosts: all
+  become: true
+  roles:
+    - role: bilalcaliskan.preparation
+      when: install_kafka | bool
+    - role: bilalcaliskan.kafka
+
+...

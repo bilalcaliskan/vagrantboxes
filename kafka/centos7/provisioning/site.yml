@@ -1,0 +1,20 @@
+---
+
+- name: Main playbook execution
+  hosts: all
+  gather_facts: false
+  become: true
+  pre_tasks:
+    - name: Clean yum cache
+      raw: yum clean all && rm -rf /var/cache/yum
+    - name: Ensure Python2 is installed on managed hosts
+      raw: test -e /usr/bin/python2 || (yum install -y python2)
+    - name: Ensure Python3 is installed on managed hosts
+      raw: test -e /usr/bin/python3 || (yum install -y python3)
+    - name: Gather facts
+      setup:
+  roles:
+    - role: bilalcaliskan.preparation
+    - role: bilalcaliskan.kafka
+
+...
