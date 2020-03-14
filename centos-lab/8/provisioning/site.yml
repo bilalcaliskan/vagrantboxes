@@ -15,6 +15,5 @@
       setup:
   roles:
     - role: bilalcaliskan.preparation
-    - role: bilalcaliskan.redis
 
 ...
