@@ -1,9 +1,0 @@
----
-
-- name: Preparation role execution play
-  hosts: all
-  become: true
-  roles:
-    - bilalcaliskan.preparation
-
-...

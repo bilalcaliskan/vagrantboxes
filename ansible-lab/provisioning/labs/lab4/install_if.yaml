@@ -1,9 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: Install package if sufficient disk space
-      yum:
-        name: mariadb-server
-        state: latest
-      loop: "{{ ansible_mounts }}"
-      when: item.mount == "/" and item.size_available > 20000000000
