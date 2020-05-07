@@ -10,11 +10,12 @@
 acceptance_config.yml
 boxes/*
 /.vagrant
-*/.vagrant
+*.vagrant
 /website/.vagrant
 /website/build
 /vagrant-spec.config.rb
 test/vagrant-spec/.vagrant/
+*
 
 # Bundler/Rubygems
 *.gem

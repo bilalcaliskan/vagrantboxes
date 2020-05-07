@@ -3,7 +3,22 @@
 - name: Preparation role execution play
   hosts: all
   become: true
+  vars:
+    host_timezone: Europe/Istanbul
+    timesync_ntp_provider: chrony
+    # timesync_ntp_provider: ntp
+  post_tasks:
+    - name: Set timezone
+      timezone:
+        name: "{{ host_timezone }}"
+      notify: restart chrony
+  handlers:
+    - name: restart chrony
+      service:
+        name: chronyd
+        state: restarted
   roles:
-    - bilalcaliskan.preparation
+    - role: linux-system-roles.timesync
+    - role: bilalcaliskan.vagrant_preparation
 
 ...

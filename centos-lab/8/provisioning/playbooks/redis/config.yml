@@ -4,8 +4,11 @@
   hosts: all
   become: true
   roles:
-    - role: bilalcaliskan.preparation
+    - role: bilalcaliskan.vagrant_preparation
       when: redis_install | bool
     - role: bilalcaliskan.redis
+      vars:
+        cluster_enabled: true
+        sentinel_enabled: false
 
 ...
