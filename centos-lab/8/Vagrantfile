@@ -1,5 +1,3 @@
-Vagrant.require_version ">= 1.6.0"
-
 NODE_COUNT = 3
 MEMORY = 1024
 CPU = 1

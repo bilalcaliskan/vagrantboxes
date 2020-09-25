@@ -1,5 +1,3 @@
-Vagrant.require_version ">= 1.6.0"
-
 NODE_COUNT = 1
 MEMORY = 1024
 CPU = 1
@@ -24,7 +22,7 @@ Vagrant.configure("2") do |config|
         machine.vm.provision :ansible do |ansible|
           ansible.limit = "all"
           ansible.config_file = "provisioning/ansible.cfg"
-          #ansible.inventory_path = "provisioning/inventory/hosts.ini"
+          # ansible.inventory_path = "provisioning/inventories/hosts"
           ansible.playbook = "provisioning/site.yml"
         end
       end
