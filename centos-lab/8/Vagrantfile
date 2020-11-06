@@ -1,10 +1,26 @@
-NODE_COUNT = 2
+NODE_COUNT = 3
 MEMORY = 2048
 CPU = 2
 HOSTNAME_PREFIX = "centos8"
 BOX = "centos/8"
 
 Vagrant.configure("2") do |config|
+  # Provision Load Balancer Node
+  config.vm.define "loadbalancer" do |machine|
+    machine.vm.box = "#{BOX}"
+    machine.ssh.insert_key = false
+    machine.vm.network "private_network", ip: "10.0.15.10"
+    machine.vm.network "forwarded_port", guest: 22, host: "2230", id: "ssh"
+    machine.ssh.forward_agent = true
+    machine.vm.synced_folder ".", "/vagrant", disabled: true
+    machine.vm.provider "virtualbox" do |vb|
+        vb.name = "loadbalancer"
+        vb.memory = 512
+        vb.cpus = 1
+    end
+    machine.vm.hostname = "loadbalancer"
+  end
+
   # Creation of the managed hosts
   (1..NODE_COUNT).each do |machine_id|
     config.vm.define "#{HOSTNAME_PREFIX}node0#{machine_id}" do |machine|
