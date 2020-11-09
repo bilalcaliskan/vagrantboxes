@@ -1,0 +1,74 @@
+MASTER_COUNT = 3
+MASTER_MEMORY = 2048
+MASTER_CPU = 2
+MASTER_HOSTNAME_PREFIX = "rkemaster"
+
+WORKER_COUNT = 0
+WORKER_MEMORY = 1500
+WORKER_CPU = 1
+WORKER_HOSTNAME_PREFIX = "rkenode"
+
+COUNTER = 0
+BOX = "centos/8"
+
+Vagrant.configure("2") do |config|
+  # Provision Load Balancer Node
+  config.vm.define "rkeloadbalancer" do |machine|
+    machine.vm.box = "#{BOX}"
+    machine.ssh.insert_key = false
+    machine.vm.network "private_network", ip: "10.0.15.10"
+    machine.vm.network "forwarded_port", guest: 22, host: "2230", id: "ssh"
+    machine.ssh.forward_agent = true
+    machine.vm.synced_folder ".", "/vagrant", disabled: true
+    machine.vm.provider "virtualbox" do |vb|
+        vb.name = "rkeloadbalancer"
+        vb.memory = 512
+        vb.cpus = 1
+    end
+    machine.vm.hostname = "rkeloadbalancer"
+  end
+
+  # Creation of the master nodes
+  (1..MASTER_COUNT).each do |machine_id|
+    config.vm.define "#{MASTER_HOSTNAME_PREFIX}0#{machine_id}" do |machine|
+      machine.vm.box = "#{BOX}"
+      machine.ssh.insert_key = false
+      COUNTER = COUNTER + 1
+      machine.vm.hostname = "#{MASTER_HOSTNAME_PREFIX}0#{COUNTER}"
+      machine.vm.network "private_network", ip: "10.0.15.#{28 + COUNTER}"
+      machine.vm.network "forwarded_port", guest: 22, host: "22#{16 + COUNTER}", id: "ssh"
+      machine.ssh.forward_agent = true
+      machine.vm.synced_folder ".", "/vagrant", disabled: true
+      machine.vm.post_up_message = "Counter = #{COUNTER}"
+      machine.vm.provider "virtualbox" do |v|
+        v.customize ["modifyvm", :id, "--memory", "#{MASTER_MEMORY}"]
+        v.customize ["modifyvm", :id, "--cpus", "#{MASTER_CPU}"]
+      end
+    end
+  end
+
+  # Creation of the worker nodes
+  (1..WORKER_COUNT).each do |machine_id|
+    config.vm.define "#{WORKER_HOSTNAME_PREFIX}0#{machine_id}" do |machine|
+      machine.vm.box = "#{BOX}"
+      machine.ssh.insert_key = false
+      COUNTER = COUNTER + 1
+      machine.vm.hostname = "#{WORKER_HOSTNAME_PREFIX}0#{COUNTER}"
+      machine.vm.network "private_network", ip: "10.0.15.#{28 + COUNTER}"
+      machine.vm.network "forwarded_port", guest: 22, host: "22#{16 + COUNTER}", id: "ssh"
+      machine.ssh.forward_agent = true
+      machine.vm.synced_folder ".", "/vagrant", disabled: true
+      machine.vm.provider "virtualbox" do |v|
+        v.customize ["modifyvm", :id, "--memory", "#{WORKER_MEMORY}"]
+        v.customize ["modifyvm", :id, "--cpus", "#{WORKER_CPU}"]
+      end
+    end
+  end
+
+  config.vm.provision :ansible do |ansible|
+    ansible.limit = "all"
+    ansible.config_file = "provisioning/ansible.cfg"
+    #ansible.inventory_path = "provisioning/inventory/hosts.ini"
+    ansible.playbook = "provisioning/site.yml"
+  end
+end
