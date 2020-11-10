@@ -12,22 +12,6 @@ COUNTER = 0
 BOX = "centos/8"
 
 Vagrant.configure("2") do |config|
-  # Provision Load Balancer Node
-  config.vm.define "rkeloadbalancer" do |machine|
-    machine.vm.box = "#{BOX}"
-    machine.ssh.insert_key = false
-    machine.vm.network "private_network", ip: "10.0.15.10"
-    machine.vm.network "forwarded_port", guest: 22, host: "2230", id: "ssh"
-    machine.ssh.forward_agent = true
-    machine.vm.synced_folder ".", "/vagrant", disabled: true
-    machine.vm.provider "virtualbox" do |vb|
-        vb.name = "rkeloadbalancer"
-        vb.memory = 512
-        vb.cpus = 1
-    end
-    machine.vm.hostname = "rkeloadbalancer"
-  end
-
   # Creation of the master nodes
   (1..MASTER_COUNT).each do |machine_id|
     config.vm.define "#{MASTER_HOSTNAME_PREFIX}0#{machine_id}" do |machine|
