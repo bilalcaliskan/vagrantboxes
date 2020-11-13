@@ -1,15 +1,15 @@
-MASTER_COUNT = 2
-MASTER_MEMORY = 2048
-MASTER_CPU = 2
-MASTER_HOSTNAME_PREFIX = "rkemaster"
+MASTER_COUNT = 1
+MASTER_MEMORY = 512
+MASTER_CPU = 1
+MASTER_HOSTNAME_PREFIX = "k3smaster"
 
 WORKER_COUNT = 0
 WORKER_MEMORY = 1500
 WORKER_CPU = 1
-WORKER_HOSTNAME_PREFIX = "rkenode"
+WORKER_HOSTNAME_PREFIX = "k3snode"
 
 COUNTER = 0
-BOX = "ubuntu/bionic64"
+BOX = "alpine/alpine64"
 
 Vagrant.configure("2") do |config|
   # Creation of the master nodes
@@ -19,8 +19,8 @@ Vagrant.configure("2") do |config|
       machine.ssh.insert_key = false
       COUNTER = COUNTER + 1
       machine.vm.hostname = "#{MASTER_HOSTNAME_PREFIX}0#{COUNTER}"
-      machine.vm.network "private_network", ip: "10.0.15.#{28 + COUNTER}"
-      machine.vm.network "forwarded_port", guest: 22, host: "22#{16 + COUNTER}", id: "ssh"
+      machine.vm.network "private_network", ip: "10.0.15.#{38 + COUNTER}"
+      machine.vm.network "forwarded_port", guest: 22, host: "22#{36 + COUNTER}", id: "ssh"
       machine.ssh.forward_agent = true
       machine.vm.synced_folder ".", "/vagrant", disabled: true
       machine.vm.post_up_message = "Counter = #{COUNTER}"
@@ -38,8 +38,8 @@ Vagrant.configure("2") do |config|
       machine.ssh.insert_key = false
       COUNTER = COUNTER + 1
       machine.vm.hostname = "#{WORKER_HOSTNAME_PREFIX}0#{COUNTER}"
-      machine.vm.network "private_network", ip: "10.0.15.#{28 + COUNTER}"
-      machine.vm.network "forwarded_port", guest: 22, host: "22#{16 + COUNTER}", id: "ssh"
+      machine.vm.network "private_network", ip: "10.0.15.#{38 + COUNTER}"
+      machine.vm.network "forwarded_port", guest: 22, host: "22#{36 + COUNTER}", id: "ssh"
       machine.ssh.forward_agent = true
       machine.vm.synced_folder ".", "/vagrant", disabled: true
       machine.vm.provider "virtualbox" do |v|

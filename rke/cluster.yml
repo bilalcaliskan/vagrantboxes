@@ -8,7 +8,7 @@ nodes:
   - controlplane
   - worker
   - etcd
-  hostname_override: ""
+  hostname_override: rkemaster01
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
@@ -24,23 +24,7 @@ nodes:
   - controlplane
   - worker
   - etcd
-  hostname_override: ""
-  user: vagrant
-  docker_socket: /var/run/docker.sock
-  ssh_key: ""
-  ssh_key_path: ~/.vagrant.d/insecure_private_key
-  ssh_cert: ""
-  ssh_cert_path: ""
-  labels: {}
-  taints: []
-- address: 10.0.15.31
-  port: "22"
-  internal_address: ""
-  role:
-  - controlplane
-  - worker
-  - etcd
-  hostname_override: ""
+  hostname_override: rkemaster02
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
