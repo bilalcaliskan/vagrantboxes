@@ -17,3 +17,10 @@
 - name: Import preparation playbook
   import_playbook: "{{ lookup('env','ANSIBLE_HOME') }}/playbooks/preparation/config.yml"
 
+- name: Import kafka playbook
+  import_playbook: "{{ lookup('env','ANSIBLE_HOME') }}/playbooks/kafka/config.yml"
+
+- name: Import kafka exporter playbook
+  import_playbook: "{{ lookup('env','ANSIBLE_HOME') }}/playbooks/kafka_exporter/config.yml"
+
+...

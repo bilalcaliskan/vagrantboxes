@@ -1,4 +1,4 @@
 [nodes]
   centos7node01 ansible_host=127.0.0.1 ansible_port=2211
-  centos7node02 ansible_host=127.0.0.1 ansible_port=2212
-  centos7node03 ansible_host=127.0.0.1 ansible_port=2213
+  #centos7node02 ansible_host=127.0.0.1 ansible_port=2212
+  #centos7node03 ansible_host=127.0.0.1 ansible_port=2213
