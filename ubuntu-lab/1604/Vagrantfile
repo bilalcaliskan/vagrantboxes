@@ -1,8 +1,9 @@
 NODE_COUNT = 1
 MEMORY = 2048
 CPU = 2
-HOSTNAME_PREFIX = "bionic"
-BOX = "ubuntu/bionic64"
+HOSTNAME_PREFIX = "xenial"
+BOX = "ubuntu/xenial64"
+# xenial = 16.04
 
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |machine_id|

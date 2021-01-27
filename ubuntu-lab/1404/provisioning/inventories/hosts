@@ -1,0 +1,4 @@
+[nodes]
+  trustynode01 ansible_host=127.0.0.1 ansible_port=2211
+  trustynode02 ansible_host=127.0.0.1 ansible_port=2212
+  trustynode03 ansible_host=127.0.0.1 ansible_port=2213
