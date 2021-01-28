@@ -1,6 +1,6 @@
-NODE_COUNT = 1
-MEMORY = 2048
-CPU = 2
+NODE_COUNT = 3
+MEMORY = 1024
+CPU = 1
 HOSTNAME_PREFIX = "focal"
 BOX = "ubuntu/focal64"
 # focal = 20.04
