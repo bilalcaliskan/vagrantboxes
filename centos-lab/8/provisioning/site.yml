@@ -17,4 +17,3 @@
 - name: Import preparation playbook
   import_playbook: "{{ lookup('env','ANSIBLE_HOME') }}/playbooks/preparation/config.yml"
 
-...

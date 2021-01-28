@@ -1,7 +1,0 @@
----
-
-- name: Main playbook execution
-  hosts: all
-  serial: "100%"
-  roles:
-    - preparation
