@@ -1,4 +1,4 @@
 [nodes]
-  focalnode01 ansible_host=127.0.0.1 ansible_port=2211
-  focalnode02 ansible_host=127.0.0.1 ansible_port=2212
-  focalnode03 ansible_host=127.0.0.1 ansible_port=2213
+  focalnode01 ansible_host=127.0.0.1 ansible_port=2231
+  focalnode02 ansible_host=127.0.0.1 ansible_port=2232
+  focalnode03 ansible_host=127.0.0.1 ansible_port=2233
