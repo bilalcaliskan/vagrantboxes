@@ -1,4 +1,12 @@
-[nodes]
+[all]
   xenialnode01 ansible_host=127.0.0.1 ansible_port=2221
   xenialnode02 ansible_host=127.0.0.1 ansible_port=2222
   xenialnode03 ansible_host=127.0.0.1 ansible_port=2223
+
+#[zookeepers]
+#  xenialnode01
+
+[brokers]
+  xenialnode01
+  xenialnode02
+  xenialnode03

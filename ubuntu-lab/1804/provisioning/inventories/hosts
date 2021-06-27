@@ -1,4 +1,4 @@
-[nodes]
-  bionicnode01 ansible_host=127.0.0.1 ansible_port=3211
-  bionicnode02 ansible_host=127.0.0.1 ansible_port=3212
-  bionicnode03 ansible_host=127.0.0.1 ansible_port=3213
+[brokers]
+  bionicnode01 ansible_host=127.0.0.1 ansible_port=5211
+  bionicnode02 ansible_host=127.0.0.1 ansible_port=5212
+  bionicnode03 ansible_host=127.0.0.1 ansible_port=5213

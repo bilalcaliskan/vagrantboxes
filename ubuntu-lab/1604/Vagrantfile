@@ -1,5 +1,5 @@
-NODE_COUNT = 1
-MEMORY = 1024
+NODE_COUNT = 3
+MEMORY = 2048
 CPU = 1
 HOSTNAME_PREFIX = "xenial"
 BOX = "ubuntu/xenial64"
